@@ -30,7 +30,7 @@ export function IconLogo({ className }: { className?: string }) {
 	);
 }
 
-export default function Logo() {
+export function Logo() {
 	return (
 		<div className="flex items-center">
 			<IconLogo className="w-4 h-4"/>

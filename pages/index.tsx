@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import Logo from '../components/icons/logo';
+import { Logo } from '../components/icons/Logo';
 
 const Home: NextPage = () => {
 	return (
