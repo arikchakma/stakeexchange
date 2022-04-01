@@ -32,7 +32,7 @@ export function IconLogo({ className }: { className?: string }) {
 
 export function Logo() {
 	return (
-		<div className="flex items-center">
+		<div className="flex items-center gap-1">
 			<IconLogo className="w-4 h-4"/>
 			<span className="uppercase font-medium text-base">Stake Exchange</span>
 		</div>

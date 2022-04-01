@@ -1,10 +1,15 @@
 import type { NextPage } from 'next';
-import { Logo } from '../components/icons/Logo';
+import NextLink from 'next/link';
+import { Logo } from '@/components/icons/Logo';
 
 const Home: NextPage = () => {
 	return (
-		<div className="bg-black text-white">
-			<Logo />
+		<div>
+			<NextLink href="/">
+				<a className="cursor-pointer">
+					<Logo />
+				</a>
+			</NextLink>
 		</div>
 	);
 };
