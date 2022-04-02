@@ -1,6 +1,11 @@
 export default function Send({ a }: { a: any }) {
-	console.log(a);
-	return <div>send</div>;
+	return (
+		<div>
+			<h1>Send</h1>
+			<p>Transfer tokens to any address</p>
+			<p>Send directly to any supported address, straight from your wallet.</p>
+		</div>
+	);
 }
 
 export async function getStaticPaths() {
