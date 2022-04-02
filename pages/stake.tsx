@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useAccount, useConnect } from 'wagmi';
 import { shortenAddress } from '@/utils/wallet';
+import MetamaskConnector from '@/components/wallet/MetamaskConnector';
 
 const Stake = () => {
 	const [{ data, error }, connect] = useConnect();
@@ -38,6 +39,7 @@ const Stake = () => {
 					</div>
 					<div>Connected to {accountData?.connector?.name}</div>
 					<button onClick={disconnect}>Disconnect</button>
+					<MetamaskConnector />
 				</div>
 			) : null}
 		</div>
