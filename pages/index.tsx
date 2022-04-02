@@ -8,8 +8,8 @@ import MetamaskConnector from '@/components/wallet/MetamaskConnector';
 const Home: NextPage = () => {
 	return (
 		<Container>
-			<div className="py-2 border-b border-white/10">
-				<div className="layout-container flex justify-between items-center">
+			<div className="border-b border-white/10 py-2">
+				<div className="layout-container flex items-center justify-between">
 					<NextLink href="/">
 						<a className="cursor-pointer">
 							<Logo />

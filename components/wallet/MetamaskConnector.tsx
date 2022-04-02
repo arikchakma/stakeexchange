@@ -1,6 +1,8 @@
 import { useAccount, useBalance } from 'wagmi';
 import { shortenAddress } from '@/utils/wallet';
 
+import MetamaskSkeleton from '../skeletons/MetamaskSkeleton';
+
 export default function MetamaskConnector() {
 	const [{ data: accountData }, disconnect] = useAccount({
 		fetchEns: true,
@@ -10,20 +12,22 @@ export default function MetamaskConnector() {
 		addressOrName: accountData?.address,
 	});
 
-	if (loading || !accountData) return <MetamaskSkeletonState />;
+	if (!accountData) return null;
+
+	if (loading || !accountData) return <MetamaskSkeleton />;
 
 	return (
 		<>
 			{accountData ? (
 				<div className="flex items-center">
-					<div className="flex items-center gap-2 bg-neutral-800 rounded p-[2px]">
+					<div className="flex items-center gap-2 rounded bg-neutral-800 p-[2px]">
 						{/* Balance in ETH */}
 						<span className="px-2 py-1">
 							{balanceData?.formatted} {balanceData?.symbol}
 						</span>
-						<div className="flex items-center gap-2 bg-neutral-900 px-2 py-1 rounded">
+						<div className="flex items-center gap-2 rounded bg-neutral-900 px-2 py-1">
 							{/* ENS Avatar */}
-							<div className="bg-white w-5 h-5 rounded-xl bg-gradient-to-r from-violet-500 to-fuchsia-500">
+							<div className="h-5 w-5 rounded-xl bg-white bg-gradient-to-r from-violet-500 to-fuchsia-500">
 								{/* <Image src="/favicon.ico" width={20} height={20} alt="" /> */}
 							</div>
 							{/* Address */}
@@ -51,15 +55,13 @@ export default function MetamaskConnector() {
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								className="h-5 w-5 cursor-pointer"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke="currentColor"
-								strokeWidth={2}
+								viewBox="0 0 20 20"
+								fill="currentColor"
 							>
 								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									d="M19 9l-7 7-7-7"
+									fillRule="evenodd"
+									d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+									clipRule="evenodd"
 								/>
 							</svg>
 						</div>
@@ -67,22 +69,5 @@ export default function MetamaskConnector() {
 				</div>
 			) : null}
 		</>
-	);
-}
-
-function MetamaskSkeletonState() {
-	return (
-		<div className="flex items-center">
-			<div className="flex items-center gap-1 bg-neutral-800 rounded p-[2px]">
-				<div className="mx-2 py-1 w-14 h-6 bg-white/30 rounded animate-pulse duration-150" />
-				<div className="flex items-center gap-2 bg-neutral-900 px-2 py-1 rounded">
-					<div className="bg-white/30 w-5 h-5 rounded-xl animate-pulse duration-150" />
-					<span className="font-normal w-24 h-6 bg-white/30 rounded animate-pulse duration-150" />
-
-					<div className="w-5 h-5 bg-white/30 rounded-full animate-pulse duration-150" />
-					<div className="w-5 h-5 bg-white/30 rounded-full animate-pulse duration-150" />
-				</div>
-			</div>
-		</div>
 	);
 }
